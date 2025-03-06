@@ -49,6 +49,48 @@ GET(/player/{playerId}): Get the aggregate statistic by player id
 
 GET(/team/{teamId}): Get team aggregate statistic by team id
 
+API call example:
+Create a new team:
+curl --location 'http://localhost:8080/api/teams' \
+--header 'Content-Type: application/json' \
+--data '{
+  "name": "NYN"
+}'
+
+Create new player:
+curl --location 'http://localhost:8080/api/players' \
+--header 'Content-Type: application/json' \
+--data '{
+  "name": "Romi",
+  "teamId" : 1
+}'
+
+Log player statistics:
+curl --location 'http://localhost:8080/api/statistics/log' \
+--header 'Content-Type: application/json' \
+--data '[
+    {
+    "playerId": 1,
+    "gameDate": "2025-03-03",
+    "points": 30,
+    "rebounds": 9,
+    "assists": 4,
+    "steals": 2,
+    "blocks": 1,
+    "fouls": 3,
+    "turnovers": 2,
+    "minutesPlayed": 30.5
+    }
+]
+'
+
+Get player aggregate statistics:
+curl --location 'http://localhost:8080/api/statistics/player/1' \
+--data ''
+
+Get team aggregate statistics:
+curl --location 'http://localhost:8080/api/statistics/team/1' \
+--data ''
 
 Explanation:
 After reading the task documentation and understanding the process, I decided to create a small spring boot application to handle:
